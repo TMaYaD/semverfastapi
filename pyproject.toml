@@ -1,0 +1,19 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "semverfastapi"
+version = "0.1.0"
+description = "Semantic Versioning for FastAPI"
+authors = [
+  { name = "Phoenix", email = "phoenix@loonybin.com" },
+]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "fastapi",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["semverfastapi"]
