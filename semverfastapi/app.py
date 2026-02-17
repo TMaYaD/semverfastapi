@@ -27,6 +27,16 @@ def VersionedApp(app: FastAPI, versions: list[str]) -> FastAPI:
 
         versioned_routes.append(versioned_route)
 
+        # Add unversioned route that redirects
+        app.add_api_route(
+            path=route.path,
+            endpoint=route.endpoint,
+            methods=route.methods,
+            dependencies=[Depends(check_api_version)],
+            include_in_schema=False,
+            name=route.name
+        )
+
     # 4. Now add versioned routers
     for version_str in versions:
          target_version = Version(version_str)
